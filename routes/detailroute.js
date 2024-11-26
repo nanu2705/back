@@ -16,11 +16,6 @@ app.post('/details',async (req, res) => {
     const { sname,cname,date,email,mobileNo,quantity } = req.body;
     console.log(sname,cname,date,email,mobileNo,quantity)
     try {
-    
-        
-      
-
-      
 
         // Save detail in the Detail collection
         const detail = await Detail.create({
