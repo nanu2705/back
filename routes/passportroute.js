@@ -1,35 +1,39 @@
-// import express from "express";
-// import cors from "cors";
-// import bodyParser  from "body-parser";
-// import multer from "multer";
-// import path from "path";
+import express from "express";
+import cors from "cors";
+import bodyParser  from "body-parser";
+import multer from "multer";
+import path from "path";
+import Passport from "../models/Passport.js";
 
 
-// const app = express.Router();
-// app.use(cors());
-// app.use(bodyParser.json());
+const app = express.Router();
 
 
 
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, "uploads/");
-//   },
-//   filename: function (req, file, cb) {
-//     cb(null, Date.now() + path.extname(file.originalname));
-//   },
-// });
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
 
 
-// const upload = multer({ dest: 'uploads/' })
+const upload = multer({ storage:storage })
 
-// app.post('/passport', upload.fields('photoproof','dobproof','addressproof','nonecr'), (req, res) => {
-//     try {
-//         console.log(req.file.filename);
-//         res.status(200).send('File uploaded successfully');
-//     } catch (err) {
-//         res.status(400).send('File upload failed');
-//     }
-// });
+app.use(cors());
+app.use(bodyParser.json());
 
-// export default app;
+app.post('/passport', upload.fields([{name:"files"}, {name:"file1"},{name:"file2"},{name:"file3"}]), 
+async (req, res) => {
+   
+    console.log(req.files.files[0].filename)
+    console.log(req.files.file1[0].filename)
+    console.log(req.files.file2[0].filename)
+    console.log(req.files.file3[0].filename)
+
+});
+
+export default app;
