@@ -2,9 +2,16 @@ import express from 'express';
 import Contact from '../models/Contact.js';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
+import cors from 'cors';
 
 dotenv.config();
 const app = express.Router();
+
+app.use(cors({
+    origin: "http://localhost:3000", // Replace with your frontend domain
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization"
+  }));
 
 app.post('/contact', async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');  // Allow all origins
