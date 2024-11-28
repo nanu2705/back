@@ -6,11 +6,7 @@ import fs from "fs";
 import Passport from "../models/Passport.js";
 const app = express();
 
-app.use(cors({
-  origin: "http://localhost:3000", // Replace with your frontend domain
-  methods: "GET,POST,PUT,DELETE",
-  allowedHeaders: "Content-Type,Authorization"
-}));
+app.use(cors());
 
 
 const storage = multer.diskStorage({

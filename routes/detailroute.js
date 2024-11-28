@@ -27,11 +27,7 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
-app.use(cors({
-  origin: "http://localhost:3000", // Replace with your frontend domain
-  methods: "GET,POST,PUT,DELETE",
-  allowedHeaders: "Content-Type,Authorization"
-}));
+app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/details',upload.fields([{ name: 'photo' }, { name: 'passfront' }, { name: 'passback' }]),

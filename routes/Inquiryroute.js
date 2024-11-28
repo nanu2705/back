@@ -1,13 +1,9 @@
 import express from 'express';
 import Inquiry from '../models/Inquiry.js';
-import cors from 'cors';
+
 const app = express();
 
-app.use(cors({
-    origin: "http://localhost:3000", // Replace with your frontend domain
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization"
-  }));
+
 
 app.post('/inquiry', async (req, res) => {
     try {

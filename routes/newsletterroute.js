@@ -2,14 +2,7 @@ import express from 'express';
 import NewsLetter from '../models/Newsletter.js';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
-import cors from 'cors';
 
-
-app.use(cors({
-    origin: "http://localhost:3000", // Replace with your frontend domain
-    methods: "GET,POST,PUT,DELETE",
-    allowedHeaders: "Content-Type,Authorization"
-  }));
 dotenv.config();
 const app = express.Router();
 
