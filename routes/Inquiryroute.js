@@ -1,10 +1,10 @@
 import express from 'express';
-import cors from 'cors';
+
 import Inquiry from '../models/Inquiry.js';
 
 const app = express();
 
-app.use(cors()); 
+
 
 app.post('/inquiry', async (req, res) => {
     try {
