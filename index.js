@@ -23,7 +23,11 @@ const __dirname = path.dirname(__filename);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // Your frontend origin
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 const DB = process.env.MONGODB_URL
