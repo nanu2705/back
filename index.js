@@ -24,7 +24,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 
 app.use(cors({
-  origin: 'https://veerconsultancyglobal.com', // Your frontend origin
+  origin: 'http://localhost:3001', // Your frontend origin
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
